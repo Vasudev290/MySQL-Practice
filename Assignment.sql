@@ -1,3 +1,6 @@
+mysql user: root
+password: vasu@123
+
 PRACTICE DATA;-
 
 create table employee(
@@ -177,7 +180,7 @@ select ename,esal from employee where city="New Delhi" order by esal desc limit 
 +--------+---------+
 1 row in set (0.00 sec)
 11. Write a query to to find person who line in 'New Delhi' with age above 70.
-mysql> select ename, eage from employee where city= "New Delhi" and eage<70;
+select ename, eage from employee where city= "New Delhi" and eage<70;
 Empty set (0.00 sec)
 
 12. Write a query to find person with salary below 500000.
@@ -194,7 +197,7 @@ select * from employee where esal < 500000;
 5 rows in set (0.00 sec)
 
 13. Write a query to find name of people with salary range between 20000 to 40000.
-mysql> select * from employee where esal between 200000 and 400000;
+select * from employee where esal between 200000 and 400000;
 +-----+-----------+---------------------+------+--------+-----------+-----------------+----------+--------+---------------+
 | eid | ename     | email               | eage | esal   | city      | state           | zin_code | mobile | jobrole       |
 +-----+-----------+---------------------+------+--------+-----------+-----------------+----------+--------+---------------+
@@ -205,7 +208,7 @@ mysql> select * from employee where esal between 200000 and 400000;
 3 rows in set (0.00 sec)
 
 15. Write a query to find person whose first name third character is 'j'.
-mysql> select * from employee where ename like "_j%";
+select * from employee where ename like "_j%";
 +-----+-------------+-----------------+------+--------+---------+-----------+----------+--------+------------+
 | eid | ename       | email           | eage | esal   | city    | state     | zin_code | mobile | jobrole    |
 +-----+-------------+-----------------+------+--------+---------+-----------+----------+--------+------------+
@@ -214,7 +217,7 @@ mysql> select * from employee where ename like "_j%";
 1 row in set (0.00 sec)
 
 16. Write a query to find person whose first name third character is 'i' and live in 'New Delhi'.
-mysql> select * from employee where ename like "_i%" and city="New Delhi";
+select * from employee where ename like "_i%" and city="New Delhi";
 +-----+------------+----------------------+------+--------+-----------+-------------+----------+--------+-------------+
 | eid | ename      | email                | eage | esal   | city      | state       | zin_code | mobile | jobrole     |
 +-----+------------+----------------------+------+--------+-----------+-------------+----------+--------+-------------+
@@ -223,7 +226,7 @@ mysql> select * from employee where ename like "_i%" and city="New Delhi";
 1 row in set (0.00 sec)
 
 17. Write a query to count persons whose first name third character is 'j'.
- select count(ename) from employee where substring(ename, 3, 1)="j";
+select count(ename) from employee where substring(ename, 3, 1)="j";
 +--------------+
 | count(ename) |
 +--------------+
@@ -233,7 +236,7 @@ mysql> select * from employee where ename like "_i%" and city="New Delhi";
 
 18. Write a query to fetch person with lowest salary and add 10000 to its salary.
 19. Write a query to Sort the table by ascending.
-mysql> select * from employee order by ename ;
+select * from employee order by ename ;
 +-----+---------------+----------------------+------+---------+--------------+------------------+----------+--------+-----------------+
 | eid | ename         | email                | eage | esal    | city         | state            | zin_code | mobile | jobrole         |
 +-----+---------------+----------------------+------+---------+--------------+------------------+----------+--------+-----------------+
@@ -262,7 +265,7 @@ mysql> select * from employee order by ename ;
 21 rows in set (0.00 sec)
 
 20. Write a query to Sort the table by descending.
-mysql> select * from employee order by ename desc ;
+select * from employee order by ename desc ;
 +-----+---------------+----------------------+------+---------+--------------+------------------+----------+--------+-----------------+
 | eid | ename         | email                | eage | esal    | city         | state            | zin_code | mobile | jobrole         |
 +-----+---------------+----------------------+------+---------+--------------+------------------+----------+--------+-----------------+
@@ -288,7 +291,7 @@ mysql> select * from employee order by ename desc ;
 | 103 | Ajith Kumar   | ajith@gmail.com      |   55 |  750000 | Chennai      | Tamilnadu        |   600073 |   7495 | Bike-Racer      |
 | 108 | Aarith        | aarthi@gmail.com     |   70 |  500000 | Mumbai       | Maharastha       |   897645 |   8958 | Trainee         |
 +-----+---------------+----------------------+------+---------+--------------+------------------+----------+--------+-----------------+
-21 rows in set (0.00 sec)
+
 21. Write a query to show person whose name's last third word is 'j' and salary is more then 30000. 
 22. Write a query to show all people who live in 'Bangalore' and 'Wayanad'.
 mysql> select * from employee where city="Wayanad" or city="Bangalore";
@@ -345,6 +348,22 @@ mysql> select ename as Name, eage as Age from employee;
 27. Write a query to find people whose cities are not null.
 28. Write a query to delete data of person whose id is 109.
 29. Write a query to group by people with their age and show first three rows of data.
+select eage as Age from employee group by eage order by eage limit 3;
++-----+
+| Age |
++-----+
+|  23 |
+|  28 |
+|  29 |
++-----+
+
 30. Write a query to group by people of 'New Delhi' by their last name.
+select ename as Name,count(*) as Count from employee where city="New Delhi" group by ename order by count desc;
++------------+-------+
+| Name       | Count |
++------------+-------+
+| VijayBittu |     1 |
+| Akitha     |     1 |
++------------+-------+
 
 
